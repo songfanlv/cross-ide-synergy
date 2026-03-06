@@ -1,0 +1,2 @@
+# AntigravityShare
+一个能将谷歌反重力和VScode编译器进行协同的扩展插件
