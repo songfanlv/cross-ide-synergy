@@ -1,0 +1,2 @@
+﻿src/network/GuestClient.ts(6,29): error TS2305: Module '"werift-webrtc"' has no exported member 'RTCDataChannel'.
+src/network/HostServer.ts(6,29): error TS2305: Module '"werift-webrtc"' has no exported member 'RTCDataChannel'.

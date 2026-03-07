@@ -1,0 +1,20 @@
+﻿src/network/GuestClient.ts(6,29): error TS2305: Module '"werift-webrtc"' has no exported member 'RTCSessionDescription'.
+src/network/GuestClient.ts(6,52): error TS2305: Module '"werift-webrtc"' has no exported member 'RTCIceCandidate'.
+src/network/GuestClient.ts(6,69): error TS2305: Module '"werift-webrtc"' has no exported member 'RTCDataChannel'.
+src/network/GuestClient.ts(106,13): error TS2353: Object literal may only specify known properties, and 'iceServers' does not exist in type 'Partial<Configuration>'.
+src/network/GuestClient.ts(109,29): error TS2551: Property 'ondatachannel' does not exist on type 'RTCPeerConnection'. Did you mean 'datachannel'?
+src/network/GuestClient.ts(109,46): error TS7006: Parameter 'event' implicitly has an 'any' type.
+src/network/GuestClient.ts(139,29): error TS2339: Property 'onicecandidate' does not exist on type 'RTCPeerConnection'.
+src/network/GuestClient.ts(139,47): error TS7006: Parameter 'event' implicitly has an 'any' type.
+src/network/GuestClient.ts(148,29): error TS2551: Property 'onconnectionstatechange' does not exist on type 'RTCPeerConnection'. Did you mean 'iceConnectionStateChange'?
+src/network/GuestClient.ts(149,48): error TS2551: Property 'connectionState' does not exist on type 'RTCPeerConnection'. Did you mean 'iceConnectionState'?
+src/network/GuestClient.ts(174,37): error TS2339: Property 'addIceCandidate' does not exist on type 'RTCPeerConnection'.
+src/network/HostServer.ts(6,29): error TS2305: Module '"werift-webrtc"' has no exported member 'RTCSessionDescription'.
+src/network/HostServer.ts(6,52): error TS2305: Module '"werift-webrtc"' has no exported member 'RTCIceCandidate'.
+src/network/HostServer.ts(6,69): error TS2305: Module '"werift-webrtc"' has no exported member 'RTCDataChannel'.
+src/network/HostServer.ts(76,13): error TS2353: Object literal may only specify known properties, and 'iceServers' does not exist in type 'Partial<Configuration>'.
+src/network/HostServer.ts(94,12): error TS2339: Property 'onicecandidate' does not exist on type 'RTCPeerConnection'.
+src/network/HostServer.ts(94,30): error TS7006: Parameter 'event' implicitly has an 'any' type.
+src/network/HostServer.ts(103,12): error TS2551: Property 'onconnectionstatechange' does not exist on type 'RTCPeerConnection'. Did you mean 'iceConnectionStateChange'?
+src/network/HostServer.ts(104,30): error TS2551: Property 'connectionState' does not exist on type 'RTCPeerConnection'. Did you mean 'iceConnectionState'?
+src/network/HostServer.ts(130,20): error TS2339: Property 'addIceCandidate' does not exist on type 'RTCPeerConnection'.

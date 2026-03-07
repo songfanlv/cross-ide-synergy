@@ -1,0 +1,80 @@
+{
+  "name": "antigravity-share",
+  "displayName": "Antigravity Share - 协同编辑",
+  "description": "实时局域网协同编辑扩展，支持通过本机IP让局域网内其他人共同参与编辑项目。",
+  "version": "3.0.0",
+  "license": "MIT",
+  "files": [
+    "out",
+    "icon.png",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/antigravity/antigravity-share"
+  },
+  "publisher": "antigravity",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "icon": "icon.png",
+  "activationEvents": [
+    "onCommand:antigravity.share",
+    "onCommand:antigravity.join",
+    "onCommand:antigravity.disconnect",
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "antigravity.share",
+        "title": "Antigravity: 分享项目 (Share Project)",
+        "icon": "$(broadcast)"
+      },
+      {
+        "command": "antigravity.join",
+        "title": "Antigravity: 加入协作 (Join Collaboration)",
+        "icon": "$(plug)"
+      },
+      {
+        "command": "antigravity.disconnect",
+        "title": "Antigravity: 断开连接 (Disconnect)",
+        "icon": "$(debug-disconnect)"
+      }
+    ],
+    "configuration": {
+      "title": "Antigravity Share",
+      "properties": {
+        "antigravity.relayUrl": {
+          "type": "string",
+          "default": "",
+          "description": "自定义 WebSocket 中继服务器 URL。留空则默认使用内置的 EMQX 中继。示例：wss://your-relay-server.com"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run bundle",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "bundle": "node esbuild.js",
+    "package": "npx -y @vscode/vsce package --allow-missing-repository --out antigravity-share-v3.vsix"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.60.0",
+    "@types/ws": "^8.5.10",
+    "esbuild": "^0.20.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "mqtt": "^5.15.0",
+    "ws": "^8.16.0"
+  }
+}
