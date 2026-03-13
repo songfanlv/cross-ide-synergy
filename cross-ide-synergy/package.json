@@ -1,0 +1,94 @@
+{
+  "name": "cross-ide-synergy",
+  "displayName": "Cross-IDE Synergy",
+  "description": "Cross-IDE real-time collaboration extension with a sidecar-based sync engine.",
+  "version": "3.0.0",
+  "license": "MIT",
+  "files": [
+    "out",
+    "core-agent/bundle.js",
+    "icon.png",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/songfanlv/cross-ide-synergy"
+  },
+  "publisher": "crosside",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "icon": "icon.png",
+  "activationEvents": [
+    "onCommand:crosside.share",
+    "onCommand:crosside.join",
+    "onCommand:crosside.disconnect",
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "crosside.share",
+        "title": "Cross-IDE: Share Project",
+        "icon": "$(broadcast)"
+      },
+      {
+        "command": "crosside.join",
+        "title": "Cross-IDE: Join Session",
+        "icon": "$(plug)"
+      },
+      {
+        "command": "crosside.disconnect",
+        "title": "Cross-IDE: Disconnect",
+        "icon": "$(debug-disconnect)"
+      }
+    ],
+    "configuration": {
+      "title": "Cross-IDE Synergy",
+      "properties": {
+        "crosside.relayUrl": {
+          "type": "string",
+          "default": "",
+          "description": "Optional custom relay URL. Leave empty to use the default MQTT relay."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "clean": "node scripts/clean_dist.js",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "bundle": "node esbuild.js",
+    "bundle:agent": "node scripts/bundle_agent.js",
+    "build:hbuilderx": "node scripts/build_hbuilderx_release.js",
+    "build:jetbrains": "node scripts/build_jetbrains_release.js",
+    "build:release": "npm run clean && npm run compile && npm run bundle && npm run bundle:agent",
+    "gui:e2e": "node scripts/gui_cross_ide_e2e.js",
+    "gui:e2e:ps1": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/gui_cross_ide_e2e.ps1",
+    "gui:install:winappdriver": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/install_winappdriver.ps1",
+    "vscode:prepublish": "npm run build:release",
+    "package": "npx -y @vscode/vsce package --allow-missing-repository --out cross-ide-synergy-v3.0.0.vsix"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.60.0",
+    "@types/ws": "^8.5.10",
+    "adm-zip": "^0.5.16",
+    "archiver": "^7.0.1",
+    "esbuild": "^0.20.0",
+    "playwright": "^1.58.2",
+    "selenium-webdriver": "^4.41.0",
+    "typescript": "^5.3.0",
+    "yauzl": "^3.2.0"
+  },
+  "dependencies": {
+    "mqtt": "^5.15.0",
+    "ws": "^8.16.0"
+  }
+}

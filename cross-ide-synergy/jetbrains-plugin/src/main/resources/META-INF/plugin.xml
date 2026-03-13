@@ -1,0 +1,34 @@
+<idea-plugin>
+    <id>com.crosside.synergy.jetbrains</id>
+    <name>Cross-IDE Synergy</name>
+    <vendor>Cross-IDE Contributors</vendor>
+    <description><![CDATA[
+    Cross-IDE Synergy adds a JetBrains tool window and actions for sharing or joining
+    cross-IDE collaboration sessions backed by the Cross-IDE sidecar.
+    ]]></description>
+    <depends>com.intellij.modules.platform</depends>
+    <idea-version since-build="241"/>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow
+                id="Cross-IDE"
+                anchor="right"
+                icon="/icons/crossIdeToolWindow.svg"
+                factoryClass="com.crosside.synergy.jetbrains.ui.CrossIdeToolWindowFactory"
+                canCloseContents="false"/>
+        <notificationGroup id="Cross-IDE Synergy" displayType="BALLOON" isLogByDefault="true"/>
+    </extensions>
+
+    <actions>
+        <group id="CrossIde.Group" text="Cross-IDE Synergy" popup="true">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
+
+            <action id="CrossIde.Share" class="com.crosside.synergy.jetbrains.actions.ShareSessionAction" text="Share Project"/>
+            <action id="CrossIde.Join" class="com.crosside.synergy.jetbrains.actions.JoinSessionAction" text="Join Session"/>
+            <separator/>
+            <action id="CrossIde.Disconnect" class="com.crosside.synergy.jetbrains.actions.DisconnectSessionAction" text="Disconnect"/>
+        </group>
+    </actions>
+</idea-plugin>
